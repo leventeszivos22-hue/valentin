@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentin 💘</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    img {
+      width: 70%;
+      max-width: 260px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    .buttons {
+      position: relative;
+      height: 160px;
+      width: 100%;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 12px 24px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="i.webp" alt="cute">
+  <h2>Leszel a Valentinom? 💘</h2>
+
+  <div class="buttons">
+    <button id="yes" onclick="yesClick()">Igen</button>
+    <button id="no" onclick="moveNo()">Nem</button>
+  </div>
+
+  <script>
+    let size = 1;
+    let free = false;
+
+    function moveNo() {
+      const no = document.getElementById("no");
+      const container = document.querySelector(".buttons");
+
+      if (!free) {
+        no.style.position = "absolute";
+        free = true;
+      }
+
+      size -= 0.15;
+      if (size <= 0.2) {
+        no.style.display = "none";
+        return;
+      }
+
+      no.style.transform = `scale(${size})`;
+
+      const maxX = container.offsetWidth - no.offsetWidth;
+      const maxY = container.offsetHeight - no.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      no.style.left = x + "px";
+      no.style.top = y + "px";
+    }
+
+    function yesClick() {
+      document.body.innerHTML = `
+        <h1>Szerencséd❤️</h1>
+        <p>Találkozunk 14.-én😘</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
+
+
